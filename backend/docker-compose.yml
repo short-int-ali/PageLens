@@ -1,0 +1,33 @@
+# =============================================================================
+# Docker Compose for Local Development & Testing
+# =============================================================================
+
+version: '3.8'
+
+services:
+  pagelens-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    # Resource limits (adjust based on your machine)
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 512M
+    # Restart policy
+    restart: unless-stopped
+    # Health check
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+

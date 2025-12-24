@@ -10,8 +10,17 @@ import analyzeRouter from './routes/analyze.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// CORS configuration for production
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN 
+    ? process.env.CORS_ORIGIN.split(',').map(o => o.trim())
+    : '*',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Request logging

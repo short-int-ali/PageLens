@@ -171,3 +171,48 @@ The classifier detects these page types:
 - Pattern matching relies on common UI conventions
 - Analysis limited by crawl constraints
 
+## Deployment
+
+### Backend (Render)
+
+The backend is containerized with Docker for easy deployment on Render.
+
+1. **Push your code to GitHub/GitLab**
+
+2. **Create a new Web Service on Render:**
+   - Connect your repository
+   - Select "Docker" as the runtime
+   - Set the root directory to `backend`
+   - Render will automatically use the `Dockerfile`
+
+3. **Environment Variables on Render:**
+   - `NODE_ENV`: `production`
+   - `PORT`: `10000` (Render's default)
+
+4. **Or use the Blueprint file:**
+   - The `backend/render.yaml` file can be used with Render's Blueprint feature
+
+### Frontend (Vercel)
+
+1. **Push your code to GitHub/GitLab**
+
+2. **Import project on Vercel:**
+   - Connect your repository
+   - Set the root directory to `frontend`
+   - Framework: Vite
+
+3. **Environment Variables on Vercel:**
+   - `VITE_API_URL`: Your Render backend URL (e.g., `https://pagelens-backend.onrender.com`)
+
+4. **Update CORS on Backend:**
+   - Add your Vercel frontend URL to the CORS configuration
+
+### Local Docker Testing
+
+```bash
+cd backend
+docker-compose up --build
+```
+
+The backend will be available at http://localhost:3000
+

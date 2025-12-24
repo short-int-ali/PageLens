@@ -1,0 +1,32 @@
+# =============================================================================
+# Render Blueprint - PageLens Backend
+# https://render.com/docs/blueprint-spec
+# =============================================================================
+
+services:
+  - type: web
+    name: pagelens-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    # Render region (oregon is default, can also use: ohio, virginia, frankfurt, singapore)
+    region: oregon
+    # Instance type - "starter" for free tier, "standard" for production
+    plan: starter
+    # Auto-deploy on push
+    autoDeploy: true
+    # Environment variables
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      # Set this to your Vercel frontend URL after deployment
+      # Example: https://pagelens.vercel.app
+      - key: CORS_ORIGIN
+        sync: false
+    # Health check endpoint
+    healthCheckPath: /health
+    # Number of instances (for scaling)
+    numInstances: 1
+
