@@ -4,8 +4,12 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "https://your-backend-url.onrender.com/:path*"
+      "source": "/analyze",
+      "destination": "https://pagelens-backend.onrender.com/analyze"
+    },
+    {
+      "source": "/health",
+      "destination": "https://pagelens-backend.onrender.com/health"
     }
   ],
   "headers": [
