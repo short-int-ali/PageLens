@@ -147,6 +147,7 @@ The classifier detects these page types:
 | ECOMMERCE | Shopping cart, checkout |
 | DASHBOARD | User dashboards, portals |
 | PRICING_PAGE | Pricing plans, subscriptions |
+| UPLOAD_PAGE | File upload, media/content submission |
 
 ## Crawl Limits
 

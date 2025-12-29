@@ -67,6 +67,10 @@ const CLAIM_PATTERNS = {
   TEAM_COLLABORATION: {
     keywords: [/team/i, /collaborate/i, /share\s*with/i, /invite\s*(members|users)/i, /workspace/i],
     label: 'Team collaboration'
+  },
+  FILE_UPLOAD: {
+    keywords: [/upload/i, /drag\s*(and|&)?\s*drop/i, /submit\s*(your\s*)?(file|content|document|photo|video)/i, /share\s*(your\s*)?(file|content|photo|video|media)/i, /import/i, /attach/i],
+    label: 'File upload'
   }
 };
 
@@ -81,7 +85,9 @@ const CTA_PATTERNS = [
   { pattern: /contact\s*sales/i, claim: 'Sales team' },
   { pattern: /download\s*(now|free)?/i, claim: 'Downloadable content' },
   { pattern: /sign\s*up\s*free/i, claim: 'Free signup' },
-  { pattern: /try\s*for\s*free/i, claim: 'Free trial' }
+  { pattern: /try\s*for\s*free/i, claim: 'Free trial' },
+  { pattern: /upload\s*(now|file|your)/i, claim: 'File upload' },
+  { pattern: /submit\s*(content|your)/i, claim: 'Content submission' }
 ];
 
 /**
@@ -177,6 +183,7 @@ export const CLAIM_TO_PATTERN_MAP = {
   PRICING_TIERS: ['PRICING_PAGE'],
   ANALYTICS: ['DASHBOARD'],
   FREE_TRIAL: ['LANDING_PAGE', 'PRICING_PAGE'],
-  DEMO: ['LANDING_PAGE', 'CONTACT_SUPPORT']
+  DEMO: ['LANDING_PAGE', 'CONTACT_SUPPORT'],
+  FILE_UPLOAD: ['UPLOAD_PAGE']
 };
 

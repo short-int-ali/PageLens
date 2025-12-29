@@ -203,6 +203,37 @@ export const PATTERNS = {
       // URL signals
       { type: 'url', pattern: /\/(pricing|plans|subscribe)/i, weight: 30 }
     ]
+  },
+
+  UPLOAD_PAGE: {
+    id: 'UPLOAD_PAGE',
+    name: 'Upload / Submit Page',
+    description: 'Pages for uploading files, media, or submitting user content',
+    signals: [
+      // Input signals - file inputs are the strongest indicator
+      { type: 'input_type', value: 'file', weight: 40 },
+      { type: 'input_name', pattern: /^(file|upload|attachment|document|media|image|video|photo)s?$/i, weight: 25 },
+      
+      // Button signals
+      { type: 'button_text', pattern: /^(upload|upload\s*file|upload\s*files?)$/i, weight: 30 },
+      { type: 'button_text', pattern: /^(choose\s*file|select\s*file|browse\s*files?)$/i, weight: 25 },
+      { type: 'button_text', pattern: /^(submit|publish|post|share)$/i, weight: 15 },
+      { type: 'button_text', pattern: /^(add\s*(file|image|photo|video|media|document))$/i, weight: 25 },
+      
+      // Text signals - drag & drop and upload instructions
+      { type: 'visible_text', pattern: /drag\s*(and|&)?\s*drop/i, weight: 30 },
+      { type: 'visible_text', pattern: /drop\s*(your\s*)?(files?|images?|documents?)\s*here/i, weight: 30 },
+      { type: 'visible_text', pattern: /upload\s*(your\s*)?(files?|images?|photos?|videos?|documents?|content)/i, weight: 25 },
+      { type: 'visible_text', pattern: /select\s*(a\s*)?(file|image|photo|video|document)\s*to\s*upload/i, weight: 25 },
+      { type: 'visible_text', pattern: /supported\s*(file\s*)?(formats?|types?)/i, weight: 20 },
+      { type: 'visible_text', pattern: /max(imum)?\s*(file\s*)?size/i, weight: 20 },
+      { type: 'visible_text', pattern: /\.(jpg|jpeg|png|gif|pdf|doc|docx|mp4|mov|zip)/i, weight: 15 },
+      { type: 'visible_text', pattern: /click\s*(here\s*)?to\s*(upload|browse|select)/i, weight: 20 },
+      
+      // URL signals
+      { type: 'url', pattern: /\/(upload|submit|import|add-file|new-post|create|share)/i, weight: 25 },
+      { type: 'url', pattern: /\/(media|files?|documents?|attachments?)/i, weight: 20 }
+    ]
   }
 };
 
